@@ -1,0 +1,35 @@
+
+
+class Solution {
+
+    int search(String pat, String txt) {
+        
+        int p=pat.length();
+        int t=txt.length();
+        
+        int pt[]=new int[26];
+        int tt[]=new int[26];
+        
+        for(int i=0;i<p;i++)
+        {
+            pt[pat.charAt(i)-'a']++;
+            tt[txt.charAt(i)-'a']++;
+        }
+        int c=0;
+        if(Arrays.equals(pt,tt))
+        c++;
+        
+        
+        for(int i=p;i<t;i++)
+        {
+            tt[txt.charAt(i)-'a']++;
+            tt[txt.charAt(i-p)-'a']--;
+    if(Arrays.equals(pt,tt))
+        c++;
+
+        }
+        
+        
+        return c;
+    }
+}
